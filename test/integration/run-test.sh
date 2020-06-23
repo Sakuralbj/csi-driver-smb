@@ -20,9 +20,15 @@ GO111MODULE=off go get github.com/rexray/gocsi/csc
 
 apt update && apt install cifs-utils procps -y
 
+mkdir /tmp/share
+chmod 777 /tmp/share
+docker run -it --name samba  -p 445:445 -v /tmp/share:/mount -d dperson/samba -u "username;test"  -s "Downloads;/mount/;yes;no;no;all;user"
 function cleanup {
   echo 'pkill -f smbplugin'
   pkill -f smbplugin
+  docker stop samba
+  docker rm samba
+  rm -rf /tmp/share
 }
 
 readonly CSC_BIN="$GOBIN/csc"
