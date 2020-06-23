@@ -23,7 +23,7 @@ import (
 )
 
 func TestSanity(t *testing.T) {
-	cmd := exec.Command("./test/integration/run-test.sh")
+	cmd := exec.Command("./run-test.sh")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
