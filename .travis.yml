@@ -1,12 +1,20 @@
 language: go
 go_import_path: github.com/csi-driver/csi-driver-smb
 dist: bionic
-
+services:
+  - docker
 go:
   - "1.13.9"
 
 before_install:
   - GO111MODULE=off go get github.com/mattn/goveralls
+  - mkdir /tmp/share
+  - chmod 777 /tmp/share
+  - docker run -it --name samba  -p 445:445 -v /tmp/share:/mount -d dperson/samba -u "username;test"  -s "Downloads;/mount/;yes;no;no;all;user"
+
+after_script:
+  - docker stop samba
+  - docker rm samba
 
 script:
   #- go test -covermode=count -coverprofile=profile.cov ./pkg/...
@@ -14,3 +22,4 @@ script:
   - make verify
   - make smb-windows  
   - make container
+  - make integration-test
