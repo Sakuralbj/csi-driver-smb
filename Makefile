@@ -57,7 +57,7 @@ sanity-test: smb
 
 .PHONY: integration-test
 integration-test: smb
-	sudo go test -v -timeout=10m ./test/integration
+	go test -v -timeout=10m ./test/integration
 
 .PHONY: e2e-test
 e2e-test:
