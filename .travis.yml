@@ -13,7 +13,4 @@ before_install:
 script:
   #- go test -covermode=count -coverprofile=profile.cov ./pkg/...
   #- $GOPATH/bin/goveralls -coverprofile=profile.cov -service=travis-ci
-  - make verify
-  - make smb-windows  
-  - make container
-  - sudo -E env "PATH=$PATH" make integration-test
+  - sudo -E env "PATH=$PATH" go test ./test/integration/...
