@@ -33,7 +33,7 @@ func TestIntegration(t *testing.T) {
 	cwd, err := os.Getwd()
 	assert.NoError(t, err)
 	assert.True(t, strings.HasSuffix(cwd, "csi-driver-smb"))
-	cmd := exec.Command("sudo -E env \"PATH=$PATH\" sh test/integration/run-test.sh")
+	cmd := exec.Command("sudo -E env \"PATH=$PATH\" bash -c 'test/integration/run-test.sh' ")
 	cmd.Dir = cwd
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
