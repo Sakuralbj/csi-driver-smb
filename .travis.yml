@@ -1,8 +1,6 @@
 language: go
 go_import_path: github.com/csi-driver/csi-driver-smb
 dist: bionic
-services:
-  - docker
 go:
   - "1.13.9"
 
