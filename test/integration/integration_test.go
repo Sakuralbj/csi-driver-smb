@@ -36,7 +36,7 @@ func TestIntegration(t *testing.T) {
 	cmd1 := exec.Command("pwd")
 	cmd1.Run()
 	cmd1.Stdout = os.Stdout
-	cmd := exec.Command("./test/integration/run-test.sh ")
+	cmd := exec.Command("sudo -E env \"PATH=$PATH\"  bash test/integration/run-test.sh")
 	cmd.Dir = cwd
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
