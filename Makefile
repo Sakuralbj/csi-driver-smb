@@ -57,6 +57,7 @@ sanity-test: smb
 
 .PHONY: integration-test
 integration-test: smb
+	sudo -E env "PATH=$$PATH" bash test/integration/run-test.sh
 	sudo -E env "PATH=$$PATH" go test -v -timeout=10m ./test/integration
 
 .PHONY: e2e-test
