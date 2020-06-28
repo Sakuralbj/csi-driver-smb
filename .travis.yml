@@ -1,5 +1,4 @@
 language: go
-sudo: required
 go_import_path: github.com/csi-driver/csi-driver-smb
 dist: bionic
 services:
